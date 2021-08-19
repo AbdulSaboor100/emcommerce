@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script>
+  <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Application</title>
+</head>
+<body style="font-size: 22px;">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #f7f8f8;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Ecommerce</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span> 
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" onclick="cartPage()" href="./components/cart.html" >Cart </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./components/register.html" id="removeRegister">Register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./components/login.html" id="removeLogin">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" onclick="logOut()">logOut</a>
+              </li>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" style="width: 100%;background-position: 50%;
+ background-size: cover; background-image: url('https://www.olx.com.pk/assets/wallpaper.6416002a042322099dbfec286d7574f4.jpg'); " >
+            <img src="https://www.olx.com.pk/assets/wallpaper.6416002a042322099dbfec286d7574f4.jpg" class="d-block w-100 " alt="...">
+          </div>
+      
+         
+        </div>
+      </div>
+
+      <div class="container">
+        <h3 style="position: relative; top: 20px; right: 60px;">Fresh recommendations</h3>
+
+        <!-- <div class="card" style="width: 17rem;">
+          <img src="images/tshirt.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div> -->
+     
+
+
+
+
+
+
+
+
+<!-- 
+        <div class="cards">
+          <div class="carding1">
+            <img src="images/tshirt.jpg" alt="product">
+          <h3 >T-Shirt</h3>
+          <p>Rs 1000</p>
+          </div>
+          <div class="carding1">
+            <img src="images/tshirt.jpg" alt="product">
+          <h3 >T-Shirt</h3>
+          <p>Rs 1000</p>
+          </div>
+          <div class="carding1">
+            <img src="images/tshirt.jpg" alt="product">
+          <h3 >T-Shirt</h3>
+          <p>Rs 1000</p>
+          </div>
+          <div class="carding1">
+            <img src="images/tshirt.jpg" alt="product">
+          <h3 >T-Shirt</h3>
+          <p>Rs 1000</p>
+          </div>  
+          
+          <div class="carding1">
+            <img src="images/tshirt.jpg" alt="product">
+          <h3 >T-Shirt</h3>
+          <p>Rs 1000</p>
+          </div>
+
+
+          
+             
+
+
+
+        </div> -->
+
+
+        <div class="container1">
+          <div class="card">
+            <div class="carding1" id="1">
+              <img src="images/tshirt.jpg" alt="product" id="img1">
+            <h3 >T-Shirt</h3>
+            <p>4000</p>
+            <button onclick="addToCart(this)" class="btn btn-primary">Add To Cart</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="carding1" id="2">
+              <img src="images/tshirt.jpg" alt="product" id="img2">
+            <h3 >T-Shirt</h3>
+            <p>2000</p>
+            <button onclick="addToCart(this)" class="btn btn-primary">Add To Cart</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="carding1" id="3">
+              <img src="images/tshirt.jpg" alt="product" id="img3">
+            <h3 >T-Shirt</h3>
+            <p>1000</p>
+            <button onclick="addToCart(this)" class="btn btn-primary">Add To Cart</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="carding1" id="4">
+              <img src="images/tshirt.jpg" alt="product" id="img4">
+            <h3 >T-Shirt</h3>
+            <p>1000</p>
+            <button onclick="addToCart(this)" class="btn btn-primary">Add To Cart</button>
+            </div>
+          </div>
+            <div class="card">
+              <div class="carding1" id="5">
+                <img src="images/tshirt.jpg" alt="product" id="img5">
+              <h3 >T-Shirt</h3>
+              <p>1000</p>
+              <button onclick="addToCart(this)" class="btn btn-primary">Add To Cart</button>
+              </div>
+          </div>
+            <div class="card">
+              <div class="carding1" id="6">
+                <img src="images/tshirt.jpg" alt="product" id="img6" >
+              <h3 >T-Shirt</h3>
+              <p>1000</p>
+              <button onclick="addToCart(this)" class="btn btn-primary">Add To Cart</button>
+              </div>
+          </div>
+            <div class="card">
+              <div class="carding1" id="7">
+                <img src="images/tshirt.jpg" alt="product" id="img7">
+              <h3 >T-Shirt</h3>
+              <p>1000</p>
+              <button onclick="addToCart(this)" class="btn btn-primary">Add To Cart</button>
+              </div>
+          </div>
+        </div>
+
+
+        <div class="container1">
+          <div class="card">
+            <div class="carding1" id="8">
+              <img src="images/tshirt.jpg" alt="product" id="img8">
+            <h3 >T-Shirt</h3>
+            <p>1000</p>
+            <button onclick="addToCart(this)" class="btn btn-primary">Add To Cart</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="carding1" id="9">
+              <img src="images/tshirt.jpg" alt="product" id="img9">
+            <h3 >T-Shirt</h3>
+            <p>1000</p>
+            <button onclick="addToCart(this)" class="btn btn-primary">Add To Cart</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="carding1" id="10">
+              <img src="images/tshirt.jpg" alt="product" id="img10">
+            <h3 >T-Shirt</h3>
+            <p>1000</p>
+            <button onclick="addToCart(this)" class="btn btn-primary">Add To Cart</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="carding1" id="11">
+              <img src="images/tshirt.jpg" alt="product" id="img11">
+            <h3 >T-Shirt</h3>
+            <p>1000</p>
+            <button onclick="addToCart(this)" class="btn btn-primary">Add To Cart</button>
+            </div>
+          </div>
+            <div class="card">
+              <div class="carding1" id="12">
+                <img src="images/tshirt.jpg" alt="product" id="img12">
+              <h3 >T-Shirt</h3>
+              <p>1000</p>
+              <button onclick="addToCart(this)" class="btn btn-primary">Add To Cart</button>
+              </div>
+          </div>
+            <div class="card">
+              <div class="carding1" id="13">
+                <img src="images/tshirt.jpg" alt="product" id="img13">
+              <h3 >T-Shirt</h3>
+              <p>1000</p>
+              <button onclick="addToCart(this)" class="btn btn-primary">Add To Cart</button>
+              </div>
+          </div>
+            <div class="card">
+              <div class="carding1" id="14">
+                <img src="images/tshirt.jpg" alt="product" id="img14">
+              <h3 >T-Shirt</h3>
+              <p>1000</p>
+              <button onclick="addToCart(this)" class="btn btn-primary">Add To Cart</button>
+              </div>
+          </div>
+        </div>
+
+
+
+
+
+        
+      </div>
+      
+
+  </div>
+
+
+  <br>
+  <br>
+
+
+
+    <script src="app.js"></script>
+</body>
+</html>
